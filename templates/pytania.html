@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ankieta</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<h2 style="font-family:Sofia; font-size:300%;">Ankieta o depresji</h2>
+
+      <hr/>
+    <h4 style="font-family:Sofia; font-size:150%;">Pytania dotyczące respondenta</h4>
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+
+      <form action = "{{ request.path }}" method = "post">
+
+          <label for = "plec">Proszę o zaznaczenie płci</label><br>
+          <input type = "radio" id="woman" name = "plec" value="Kobieta" />
+          <label for="woman">Kobieta</label>
+          <input type = "radio" id="man" name = "plec" value="Mężczyzna" />
+          <label for="man">Mężczyzna</label><br><br>
+
+          <label style="font-family:Sofia; font-size:150%;" for = "wiek">Proszę podać wiek</label><br>
+          <input style="font-family:Sofia; font-size:150%;" type = "text" name = "wiek" placeholder = "wiek" /><br><br>
+
+          <label for = "miejscowosc">Wielkość miejscowości, w której Pan/Pani mieszka?</label><br>
+          <input type = "radio" id="country" name = "miejscowosc" value="Wieś" />
+          <label for="country">Wieś</label><br>
+          <input type = "radio" id="m50" name = "miejscowosc" value="Miasto50" />
+          <label for="m50">Miasto do 50 000 mieszkańców</label><br>
+          <input type = "radio" id="m100" name = "miejscowosc" value="Miasto100" />
+          <label for="m100">Miasto do 100 000 mieszkańców</label><br>
+          <input type = "radio" id="100m" name = "miejscowosc" value="100Miasto" />
+          <label for="100m">Miasto ponad 100 000 mieszkańców</label><br><br>
+
+          <label for = "study">Czy studiuje Pan/Pani na Politechnice Gdańskiej?</label><br>
+          <input type = "radio" id="studyy" name = "uczelnia" value="Tak" />
+          <label for="studyy">Tak</label>
+          <input type = "radio" id="studyn" name = "uczelnia" value="Nie" />
+          <label for="studyn">Nie</label><br><br>
+
+          <label for = "uslugi">Czy zdarzyło się Panu/Pani korzystać z usług psychologa bądź psychoterapeuty?</label><br>
+          <input type="radio" id="uslugit" name="uslugi" value="Tak">
+          <label for="uslugit">Tak</label>
+          <input type="radio" id="uslugin" name="uslugi" value="Nie">
+          <label for="uslugin">Nie</label><br><br>
+
+          <label for = "stany">Czy zdarzyły się Panu/Pani stany depresyjne?</label><br>
+          <input type="radio" id="stanyt" name="stany" value="Tak">
+          <label for="stanyt">Tak</label>
+          <input type="radio" id="stanyn" name="stany" value="Nie">
+          <label for="stanyn">Nie</label><br><br>
+
+          <hr/>
+            <h4>Pytania wiedzowe</h4>
+
+          <label for = "cierp">Czy według Pana/Pani częściej na zaburzenia depresyjne cierpią mężczyźni?</label><br>
+          <input type = "radio" id="cierpy" name = "cierp_mez" value="Tak" />
+          <label for="cierpy">Tak</label>
+          <input type = "radio" id="cierpn" name = "cierp_mez" value="Nie" />
+          <label for="cierpn">Nie</label><br><br>
+
+          <label for = "znajomosc">Czy zna Pan/Pani kogoś z zaburzeniami depresyjnymi?</label><br>
+          <input type = "radio" id="znajy" name = "znajomosc" value="Tak" />
+          <label for="znajy">Tak</label>
+          <input type = "radio" id="znajn" name = "znajomosc" value="Nie" />
+          <label for="znajn">Nie</label><br><br>
+
+          <label for = "narazony">Proszę zaznaczyć przedział wiekowy, <br>jaki Pana/Pani zdaniem jest najbardziej narażony na zaburzenia depresyjne.</label><br>
+          <input type = "radio" id="pon20" name = "narazony" value="ponizej20" />
+          <label for="pon20">poniżej 20 roku życia</label><br>
+          <input type = "radio" id="dwatrzy" name = "narazony" value="20-30" />
+          <label for="dwatrzy">20-30</label><br>
+          <input type = "radio" id="trzycztery" name = "narazony" value="30-40" />
+          <label for="trzycztery">30-40</label><br>
+          <input type = "radio" id="czterypiec" name = "narazony" value="40-50" />
+          <label for="czterypiec">40-30</label><br>
+          <input type = "radio" id="pow50" name = "narazony" value="powyzej50" />
+          <label for="pow50">powyżej 50 roku życia</label><br><br>
+
+          <label for = "objawywiek">Czy według Pana/Pani objawy zaburzeń depresyjnych <br>są u wszystkich grup społecznych takie same?</label><br>
+          <input type = "radio" id="objy" name = "objawywiek" value="Tak" />
+          <label for="objy">Tak</label>
+          <input type = "radio" id="objn" name = "objawywiek" value="Nie" />
+          <label for="objn">Nie</label><br><br>
+
+          <label for = "cierposob">Ile Pana/Pani zdaniem osób cierpi w Polsce na zaburzenia depresyjne?</label><br>
+          <input type = "text" name = "cierposob" placeholder = "liczba_osób" /><br><br>
+
+          <label for = "geny">Czy według Pana/Pani depresja może być spowodowana czynnikami genetycznymi?</label><br>
+          <input type = "radio" id="geny" name = "geny" value="Tak" />
+          <label for="geny">Tak</label>
+          <input type = "radio" id="genn" name = "geny" value="Nie" />
+          <label for="genn">Nie</label><br><br>
+
+          <hr/>
+            <h4>Pytania o akceptacje</h4>
+
+          <label for = "alien">Czy Pana/Pani zdaniem osoby ciepiące na depresję mogą czuć się wyalienowani w polskim społeczeństwie?</label><br>
+          <input type = "radio" id="aly" name = "alien" value="Tak" />
+          <label for="aly">Tak</label>
+          <input type = "radio" id="aln" name = "alien" value="Nie" />
+          <label for="aln">Nie</label><br><br>
+
+          <label for = "wies">Czy zgadza się Pan/Pani ze stwierdzeniem, że na zaburzenia depresyjne cierpią częściej mieszkańcy miast niż wsi?</label><br>
+          <input type = "radio" id="mtak" name = "wies" value="Tak" />
+          <label for="mtak">Tak</label>
+          <input type = "radio" id="mnie" name = "wies" value="Nie" />
+          <label for="mnie">Nie</label><br><br>
+
+          <label for = "wspolpraca">Gdyby dowiedział się Pan/Pani, że jeden z Pana/Pani współpracowników cierpi na depresję,<br> to jak bardzo zmieniłyby się Pana/Pani stosunek do tego człowieka?</label><br>
+          <input type = "radio" id="wcale" name = "wspolpraca" value="Wcale" />
+          <label for="wcale">Wcale</label><br>
+          <input type = "radio" id="troche" name = "wspolpraca" value="trochę" />
+          <label for="troche">trochę (nie wiedziałbym/wiedziałabym jak z taką osobą rozmawiać)</label><br>
+          <input type = "radio" id="srednio" name = "wspolpraca" value="średnio" />
+          <label for="srednio">średnio (nie chciałbym/chciałabym z taką osobą przebywać)</label><br>
+          <input type = "radio" id="bardzo" name = "wspolpraca" value="bardzo" />
+          <label for="bardzo">bardzo (bałbym/bałabym się takiej osoby)</label><br><br>
+
+          <label for = "partner">Gdyby dowiedział się Pan/Pani, że Pana/Pani partner/partnerka cierpią na depresję,<br> co by Pan/Pani zrobiła?</label><br>
+          <input type = "radio" id="pomoc" name = "partner" value="pomoc" />
+          <label for="pomoc">Szukałbym/szukałabym pomocy u specjalisty – lekarz, psycholog, psychoterapeuta</label><br>
+          <input type = "radio" id="przyczyna" name = "partner" value="przyczyna" />
+          <label for="przyczyna">Szukałbym/szukałabym przyczyny tego problemu</label><br>
+          <input type = "radio" id="sam" name = "partner" value="zostaw sam" />
+          <label for="sam">Zostawiłbym/zostawiłabym jego/ją, ponieważ on/ona sam/sama <br>powinien/powinna chcieć się leczyć z depresji, ja nie mogę do niczego go/jej zmusić</label><br>
+          <input type = "radio" id="odejsc" name = "partner" value="odejsc" />
+          <label for="odejsc">Odszedłbym/odeszłabym od tej osoby, ponieważ przerasta mnie ten problem <br> i mam obawy, że moja obecność może pogorszyć stan chorej osoby</label><br><br>
+
+          <label for = "media">Jaki według Pana/Pani mają wpływ media na postrzeganie <br>choroby psychicznej, jaką jest depresja?</label><br>
+          <input type = "radio" id="neg" name = "media" value="negatywny" />
+          <label for="neg">Negatywny – często przy zdarzeniach tj. Śmiertelny wypadek <br>lub morderstwa podawane jest, że sprawca miał problemy psychiczne,<br>a takie zbrodnie popełniane są również przez osoby zdrowe</label><br>
+          <input type = "radio" id="poz" name = "media" value="negatywny" />
+          <label for="poz">Pozytywny – w mediach coraz otwarciej mówi się o problemie <br>depresji oraz jest szerzona wiedza na temat pomocy</label><br><br>
+
+         <input type = "submit" value = "Wyślij" />
+      </form>
+
+
+</body>
+</html>

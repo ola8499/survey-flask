@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona z wynikami</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<h2>Wyniki</h2>
+
+      <hr/>
+
+
+      <h3>Powrót do strony z ankietą (<a href = "{{ url_for('new') }}">Powrót do ankiety</a>)</h3>
+    <h3>Powrót do strony startowej (<a href = "{{ url_for('show_all') }}">Powrót do strony startowej</a>)</h3>
+        <style> td { border: 1px solid black; } </style>
+      <table>
+         <thead>
+            <tr>
+               <th>1.plec</th>
+               <th>2.wiek</th>
+               <th>3.miejscowosc</th>
+               <th>4.uczelnia</th>
+                <th>5.uslugi psychologa</th>
+                <th>6.stany depresyjne</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for resp in respondent %}
+               <tr>
+                  <td>{{ resp.plec }}</td>
+                  <td>{{ resp.wiek }}</td>
+                  <td>{{ resp.miejscowosc }}</td>
+                  <td>{{ resp.uczelnia }}</td>
+                   <td>{{ resp.uslugi }}</td>
+                   <td>{{ resp.stany }}</td>
+               </tr>
+
+            {% endfor %}
+         </tbody>
+
+      </table>
+<br>
+
+<table>
+         <thead>
+            <tr>
+               <th>1.cierpienie mężczyzn xd</th>
+               <th>2.znajomość z chorym</th>
+                <th>3.narażony</th>
+               <th>4.objawy-wiek</th>
+               <th>5.ile cierpi</th>
+                <th>6.wpływ genów</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for w in wiedza %}
+               <tr>
+                  <td>{{ w.cierp_mez }}</td>
+                  <td>{{ w.znajomosc }}</td>
+                  <td>{{ w.narazony }}</td>
+                  <td>{{ w.objawy_wiek }}</td>
+                   <td>{{ w.cierposob }}</td>
+                   <td>{{ w.geny }}</td>
+               </tr>
+
+            {% endfor %}
+         </tbody>
+      </table>
+<br>
+<table>
+         <thead>
+            <tr>
+               <th>1.alienacja</th>
+               <th>2.w mieście więcej?</th>
+               <th>3.co z współpracownikiem?</th>
+               <th>4.co z partnerem?</th>
+                <th>5.wpływ mediow</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for a in akceptacja %}
+               <tr>
+                  <td>{{ a.alien }}</td>
+                  <td>{{ a.wies }}</td>
+                  <td>{{ a.wspolpraca }}</td>
+                  <td>{{ a.partner }}</td>
+                   <td>{{ a.media }}</td>
+               </tr>
+
+            {% endfor %}
+         </tbody>
+      </table>
+
+</body>
+</html>

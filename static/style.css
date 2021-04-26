@@ -1,0 +1,25 @@
+body {
+  background-image: url('depresja.jpg');
+  opacity: 0.3;
+  background-repeat: no-repeat;
+  background-position: right top;
+  margin-right: 150px;
+  background-attachment: fixed;
+}
+h1{
+text-align: center;
+font-size: 40px;
+font-family: "Sofia", sans-serif;
+}
+h2{
+font-size: 40px;
+font-family: "Sofia", sans-serif;
+}
+.label{
+font-size: 20px;
+font-family: "Sofia", sans-serif;
+}
+.input{
+font-family:Sofia;
+font-size:150%;
+}
